@@ -44,7 +44,7 @@ app.get('/submit-name', function(req,res) {
     
     names.push(name);
     //json javascript object notation
-    res.send(JSON.stringfy(names));
+    res.send(JSON.stringify(names));
 });
 app.get('/ui/madi.png', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'madi.png'));
