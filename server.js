@@ -20,9 +20,6 @@ app.get('/profile', function(req,res){
     res.sendFile(path.join(__dirname, 'ui', 'profile.html'));
 });
 
-app.get('/article-two', function(req,res){
-    res.send('Article two requested and will be served here');
-});
 
 app.get('/ui/main.js', function(req,res){
     res.sendfile(path.join(__dirname, 'ui', 'main.js'));
@@ -31,25 +28,18 @@ app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
 });
 
-app.get('/ui/photo.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'photo.jpg'));
-});
-
-app.get('/ui/1.jpg', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', '1.jpg'));
-});
 
 var pool = new Pool(config);
 app.get('/test-db', function(req,res){
     // make a select request
     // return a response with the results
-    pool.query('SELECT * FROM test', fuction(err,result){
+    pool.query('SELECT * FROM test', fuction(err,result)){
         if(err){
             res.status(500).send(err.toString());
         } else{
             res.send(JSON.stringify(result));
         }
-    });
+    };
 });
 var counter =0;
 app.get('/counter',function(req,res){
