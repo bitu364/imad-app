@@ -44,11 +44,6 @@ app.post('/create-user', function(req, res){
     });
 });
 
-
-app.get('/profile', function(req,res){
-    res.sendFile(path.join(__dirname, 'ui', 'profile.html'));
-});
-
 app.post('/login', function(req, res){
     //username,password
     var username = req.body.username;
@@ -73,6 +68,12 @@ app.post('/login', function(req, res){
         }   
     });
 });
+
+app.get('/profile', function(req,res){
+    res.sendFile(path.join(__dirname, 'ui', 'profile.html'));
+});
+
+
 
 app.get('/ui/main.js', function(req,res){
     res.sendfile(path.join(__dirname, 'ui', 'main.js'));
