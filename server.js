@@ -57,14 +57,19 @@ app.post('/login', function(req, res){
      if(err){
             res.status(500).send(err.toString());
         } else{
-            var dbstring = result.rows[0].password;
+            if(result.rows.length === 0){
+                res.send(403).send('uername/password is invalid');
+            } else {
+               var dbstring = result.rows[0].password;
             var salt = dbString.split('$')[2];
             var hashedPassword = hash(password, salt);
             if(hashedPassword === dbString){
             res.send('USER LOGGED IN SUCCESSFULLY');
             } else{
                 res.send(403).send('uername/password is invalid');
+            } 
             }
+            
         }   
     });
 });
