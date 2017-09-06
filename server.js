@@ -57,7 +57,7 @@ app.post('/login', function (req, res) {
       } else {
           if(result.rows.length === 0)
           {
-              res.send(403).send('Username/Password is Invalid');
+              res.status(403).send('Username/Password is Invalid');
               
           }
           else
@@ -74,7 +74,7 @@ app.post('/login', function (req, res) {
                   res.send('credentials are correct');
               }
               else {
-                  res.send(403).send('Username/Password is Invalid');
+                  res.status(403).send('Username/Password is Invalid');
               }
               
           }
